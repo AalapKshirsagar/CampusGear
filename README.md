@@ -27,7 +27,7 @@ Duurzaamheid: Door spullen te delen, gaan we de wegwerpmaatschappij tegen.
 Sociale Cohesie: Het versterkt het contact tussen studenten op dezelfde campus.
 * **[[Analysis]]**
     * *De technische kant: Database en User Stories.*
-    * erDiagram
+     erDiagram
     USER ||--o{ ITEM : "bezit"
     USER ||--o{ RESERVATION : "plaatst"
     ITEM ||--o{ RESERVATION : "heeft"
