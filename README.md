@@ -53,5 +53,21 @@ Sociale Cohesie: Het versterkt het contact tussen studenten op dezelfde campus.
 
 * **[[Design]]**
     * *Het visuele ontwerp: Persona's en Wireframes.*
+We hebben 3 typische gebruikers uitgewerkt:
+
+👱‍♀️ Eline (De Uitlener)
+Leeftijd: 21 jaar (Multimedia student)
+Doel: Ze heeft dure camera-apparatuur die ze doordeweeks niet gebruikt. Ze wil dat deze nuttig gebruikt wordt en er misschien een kleinigheidje aan verdienen.
+Frustratie: Spullen staan stof te happen en nemen ruimte in.
+👨‍🎓 Tom (De Lener)
+Leeftijd: 19 jaar (Rechten student)
+Doel: Snel en goedkoop een item vinden (bijv. een beamer voor een filmavond) in de buurt, zonder naar de winkel te hoeven.
+Frustratie: Dure aanschafkosten voor iets dat hij maar één keer nodig heeft.
+👮‍♂️ Mark (De Admin)
+Functie: Campus beheerder
+Doel: Zorgen dat er geen illegale of gevaarlijke items op het platform staan.
+
+
+**2. Wireframes (Schetsen)**
 
 
