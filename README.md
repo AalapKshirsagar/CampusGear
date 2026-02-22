@@ -69,5 +69,11 @@ Doel: Zorgen dat er geen illegale of gevaarlijke items op het platform staan.
 
 
 **2. Wireframes (Schetsen)**
+**StartPagina**
+<img width="1748" height="943" alt="Schermafbeelding 2026-02-14 142654" src="https://github.com/user-attachments/assets/9947c671-92d0-4bf6-bfbc-311c9480f82d" />
+
+
+<img width="1408" height="752" alt="FOTO_1_CampusGear" src="https://github.com/user-attachments/assets/533c2637-a037-4b3e-a78b-cb2c17414122" />
+
 
 
