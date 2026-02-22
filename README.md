@@ -27,6 +27,30 @@ Duurzaamheid: Door spullen te delen, gaan we de wegwerpmaatschappij tegen.
 Sociale Cohesie: Het versterkt het contact tussen studenten op dezelfde campus.
 * **[[Analysis]]**
     * *De technische kant: Database en User Stories.*
+    * erDiagram
+    USER ||--o{ ITEM : "bezit"
+    USER ||--o{ RESERVATION : "plaatst"
+    ITEM ||--o{ RESERVATION : "heeft"
+
+    USER {
+        string email
+        string password
+        string naam
+        string campus
+    }
+    ITEM {
+        string titel
+        string omschrijving
+        string categorie
+        string status
+        string image_url
+    }
+    RESERVATION {
+        date startDatum
+        date eindDatum
+        string status
+    }
+
 * **[[Design]]**
     * *Het visuele ontwerp: Persona's en Wireframes.*
 
