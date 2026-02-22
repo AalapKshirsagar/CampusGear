@@ -28,6 +28,7 @@ Sociale Cohesie: Het versterkt het contact tussen studenten op dezelfde campus.
 * **[[Analysis]]**
     * *De technische kant: Database en User Stories.*
     ** erDiagram
+      '''mermaid
     USER ||--o{ ITEM : "bezit"
     USER ||--o{ RESERVATION : "plaatst"
     ITEM ||--o{ RESERVATION : "heeft"
