@@ -18,3 +18,14 @@ Klik op de links hieronder om de onderdelen te bekijken:
     * *Het visuele ontwerp: Persona's en Wireframes.*
 
 ## 👨‍💻Product Description 
+💡 Wat is CampusGear? CampusGear is een online platform waar studenten studiemateriaal, gereedschap, elektronica en andere bruikbare items kunnen uitlenen aan of huren van medestudenten. Het brengt vraag en aanbod binnen de campus samen.
+
+👥 Voor wie is het? Het platform richt zich op twee rollen:
+
+De Lener (Student): Iemand die tijdelijk iets nodig heeft (bijv. een boormachine voor een uur, of een cursusboek voor een week) en geen zin heeft om het nieuw te kopen.
+De Uitlener (Student/Eigenaar): Iemand die spullen heeft liggen die stof staan te happen en daar graag iemand anders mee helpt (of een klein centje mee wil bijverdienen).
+🚀 Waarom maken we dit?
+
+Kostenbesparing: Studenten hebben vaak een beperkt budget. Lenen is goedkoper dan kopen.
+Duurzaamheid: Door spullen te delen, gaan we de wegwerpmaatschappij tegen.
+Sociale Cohesie: Het versterkt het contact tussen studenten op dezelfde campus.
