@@ -10,8 +10,7 @@ CampusGear is een webapplicatie waarmee studenten eenvoudig spullen (zoals studi
 ## 📂 Inhoudstafel
 
 Klik op de links hieronder om de onderdelen te bekijken:
-
-[**Product Description**](https://github.com/AalapKshirsagar/CampusGear/wiki/Product-Description)
+* [**Product Description**](https://github.com/AalapKshirsagar/CampusGear/wiki/Product-Description)
     * *De business case: Wat maken we, voor wie en waarom?*
 * **[[Analysis]]**
     * *De technische kant: Database en User Stories.*
