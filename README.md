@@ -14,6 +14,6 @@ Klik op de links hieronder om de onderdelen te bekijken:
     * *De business case: Wat maken we, voor wie en waarom?*
 * [**Analysis**](https://github.com/AalapKshirsagar/CampusGear/wiki/Analysis)
     * *De technische kant: Database en User Stories.*
-* [**Design**](
+* [**Design**](https://github.com/AalapKshirsagar/CampusGear/wiki/Design)
     * *Het visuele ontwerp: Persona's en Wireframes.*
 
