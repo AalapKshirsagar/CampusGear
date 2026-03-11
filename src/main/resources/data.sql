@@ -14,3 +14,18 @@ VALUES ('Laptop Stand', 'Verstelbare laptop standaard', 'Elektronica', 'uitgelee
 
 INSERT INTO ITEM (TITLE, DESCRIPTION, CATEGORY, STATUS, IMAGE_URL, OWNER_NAME, CAMPUS_ID)
 VALUES ('Wetenschappelijke Calculator', 'Texas Instruments TI-84', 'Elektronica', 'beschikbaar', '/img/calculator.jpg', 'Lena', 3);
+
+
+
+
+INSERT INTO STUDENT (NAAM, EMAIL, PASSWORD, CAMPUS_ID)
+VALUES ('Aalap Kshirsagar', 'aalap@student.thomasmore.be', 'password', 1);
+
+INSERT INTO STUDENT (NAAM, EMAIL, PASSWORD, CAMPUS_ID)
+VALUES ('Sara Janssen', 'sara@student.thomasmore.be', 'password', 1);
+
+INSERT INTO STUDENT (NAAM, EMAIL, PASSWORD, CAMPUS_ID)
+VALUES ('Tom Peeters', 'tom@student.thomasmore.be', 'password', 2);
+
+INSERT INTO STUDENT (NAAM, EMAIL, PASSWORD, CAMPUS_ID)
+VALUES ('Lena Claes', 'lena@student.thomasmore.be', 'password', 3);
