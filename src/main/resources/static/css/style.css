@@ -1,4 +1,4 @@
-/* ===== ALGEMEEN ===== */
+
 * {
     margin: 0;
     padding: 0;
@@ -11,7 +11,7 @@ body {
     color: #333;
 }
 
-/* ===== NAVBAR ===== */
+
 .navbar {
     background: linear-gradient(135deg, #1a1a2e, #16213e) !important;
     padding: 15px 0;
@@ -127,7 +127,6 @@ body {
     font-size: 1.1rem;
 }
 
-/* ===== TABEL ===== */
 .table {
     background: white;
     border-radius: 15px;
@@ -153,7 +152,7 @@ body {
     background-color: #f8f9ff;
 }
 
-/* ===== STATUS BADGES ===== */
+
 .badge-beschikbaar {
     background-color: #00b894;
     color: white;
@@ -172,7 +171,7 @@ body {
     font-weight: 600;
 }
 
-/* ===== FOOTER ===== */
+
 footer {
     background: linear-gradient(135deg, #1a1a2e, #16213e) !important;
     color: #a8b2d8 !important;
@@ -185,7 +184,7 @@ footer p {
     color: #a8b2d8;
 }
 
-/* ===== MAIN CONTAINER ===== */
+
 main {
     min-height: calc(100vh - 200px);
     padding: 40px 0;
