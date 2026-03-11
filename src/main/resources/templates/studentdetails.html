@@ -11,28 +11,19 @@
         <a class="navbar-brand" href="#">🎓 CampusGear</a>
         <div class="navbar-nav">
             <a class="nav-link" th:href="@{/}">Home</a>
-            <a class="nav-link active" th:href="@{/itemdetails}">Item details</a>
+            <a class="nav-link" th:href="@{/itemdetails}">Item details</a>
             <a class="nav-link" th:href="@{/campusdetails}">Campus details</a>
+            <a class="nav-link active" th:href="@{/studentdetails}">Student details</a>
             <a class="nav-link" th:href="@{/about}">Over ons</a>
-            <a class="nav-link" th:href="@{/studentdetails}">Student details</a>
         </div>
     </div>
 </nav>
-<main class="container mt-4" th:object="${item}">
-    <h1 th:text="*{title}"></h1>
-    <p class="text-muted" th:text="|Categorie: *{category}|"></p>
+<main class="container mt-4" th:object="${student}">
+    <h1 th:text="*{naam}"></h1>
     <table class="table table-bordered w-50">
         <tr>
-            <th>Omschrijving</th>
-            <td th:text="*{description}"></td>
-        </tr>
-        <tr>
-            <th>Status</th>
-            <td th:text="*{status}"></td>
-        </tr>
-        <tr>
-            <th>Eigenaar</th>
-            <td th:text="*{ownerName}"></td>
+            <th>Email</th>
+            <td th:text="*{email}"></td>
         </tr>
         <tr>
             <th>Campus</th>
