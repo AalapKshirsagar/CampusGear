@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<nav th:fragment="navbar" class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand" th:href="@{/}">🎓 CampusGear</a>
+        <div class="navbar-nav">
+            <a th:class="${currentUrl == '/' or currentUrl == '/home'}
+               ? 'nav-link active' : 'nav-link'"
+               th:href="@{/}">Home</a>
+            <a th:class="${currentUrl.startsWith('/itemlist') or currentUrl.startsWith('/itemdetails')}
+               ? 'nav-link active' : 'nav-link'"
+               th:href="@{/itemlist}">Items</a>
+            <a th:class="${currentUrl.startsWith('/campuslist') or currentUrl.startsWith('/campusitems')}
+               ? 'nav-link active' : 'nav-link'"
+               th:href="@{/campuslist}">Campussen</a>
+            <a th:class="${currentUrl.startsWith('/studentlist') or currentUrl.startsWith('/studentdetails')}
+               ? 'nav-link active' : 'nav-link'"
+               th:href="@{/studentlist}">Studenten</a>
+            <a th:class="${currentUrl == '/about'}
+               ? 'nav-link active' : 'nav-link'"
+               th:href="@{/about}">Over ons</a>
+        </div>
+    </div>
+</nav>
+</body>
+</html>

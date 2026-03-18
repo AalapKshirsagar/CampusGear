@@ -5,6 +5,7 @@ import be.thomasmore.campusgear.repositories.ItemRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.Optional;
 
@@ -17,11 +18,29 @@ public class ItemController {
         this.itemRepository = itemRepository;
     }
 
-    @GetMapping("/itemdetails")
-    public String itemDetails(Model model) {
-        Optional<Item> itemFromDb = itemRepository.findById(1);
-        if (itemFromDb.isPresent()) {
-            model.addAttribute("item", itemFromDb.get());
+    @GetMapping("/itemlist")
+    public String itemList(Model model) {
+        Iterable<Item> items = itemRepository.findAll();
+        model.addAttribute("items", items);
+        return "itemlist";
+    }
+
+    @GetMapping({"/itemdetails", "/itemdetails/{id}"})
+    public String itemDetails(
+            @PathVariable(required = false) Integer id,
+            Model model) {
+        if (id != null) {
+            Optional<Item> itemFromDb = itemRepository.findById(id);
+            if (itemFromDb.isPresent()) {
+                Item item = itemFromDb.get();
+                model.addAttribute("item", item);
+
+                long count = itemRepository.count();
+                int prevId = (id == 1) ? (int) count : id - 1;
+                int nextId = (id == count) ? 1 : id + 1;
+                model.addAttribute("prevId", prevId);
+                model.addAttribute("nextId", nextId);
+            }
         }
         return "itemdetails";
     }

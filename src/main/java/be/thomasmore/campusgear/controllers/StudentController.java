@@ -5,6 +5,7 @@ import be.thomasmore.campusgear.repositories.StudentRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.Optional;
 
@@ -17,11 +18,22 @@ public class StudentController {
         this.studentRepository = studentRepository;
     }
 
-    @GetMapping("/studentdetails")
-    public String studentDetails(Model model) {
-        Optional<Student> studentFromDb = studentRepository.findById(1);
-        if (studentFromDb.isPresent()) {
-            model.addAttribute("student", studentFromDb.get());
+    @GetMapping("/studentlist")
+    public String studentList(Model model) {
+        Iterable<Student> studenten = studentRepository.findAll();
+        model.addAttribute("studenten", studenten);
+        return "studentlist";
+    }
+
+    @GetMapping({"/studentdetails", "/studentdetails/{id}"})
+    public String studentDetails(
+            @PathVariable(required = false) Integer id,
+            Model model) {
+        if (id != null) {
+            Optional<Student> studentFromDb = studentRepository.findById(id);
+            if (studentFromDb.isPresent()) {
+                model.addAttribute("student", studentFromDb.get());
+            }
         }
         return "studentdetails";
     }

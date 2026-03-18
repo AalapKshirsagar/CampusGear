@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="nl" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/head :: headerelement}"></head>
+<body>
+<nav th:replace="~{fragments/header :: navbar}"></nav>
+<main class="container mt-4">
+    <h1>Alle Thomas More Campussen</h1>
+    <p class="lead">Klik op een campus om de beschikbare items te zien.</p>
+    <div class="row g-4 mt-2">
+        <div class="col-md-4" th:each="campus : ${campussen}">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title" th:text="${campus.naam}"></h5>
+                    <p class="text-muted" th:text="|📍 ${campus.city}|"></p>
+                    <a th:href="@{'/campusitems/' + ${campus.id}}"
+                       class="btn btn-primary btn-sm mt-2">
+                        Bekijk beschikbare items
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+<footer th:replace="~{fragments/footer :: footer}"></footer>
+</body>
+</html>
