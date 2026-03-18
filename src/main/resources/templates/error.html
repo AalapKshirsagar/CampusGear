@@ -4,11 +4,14 @@
 <body>
 <nav th:replace="~{fragments/header :: navbar}"></nav>
 <main class="container mt-4">
-    <h1>Over CampusGear</h1>
-    <p class="lead">CampusGear is een platform waar studenten
-        spullen aan elkaar uitlenen.</p>
-    <p>Kostenbesparing, duurzaamheid en sociale cohesie
-        zijn onze kernwaarden.</p>
+    <div class="alert alert-danger mt-4 text-center">
+        <h1>😕 Oeps!</h1>
+        <p class="lead">Deze pagina bestaat niet of er is
+            iets fout gegaan.</p>
+        <a th:href="@{/}" class="btn btn-primary mt-3">
+            Terug naar home
+        </a>
+    </div>
 </main>
 <footer th:replace="~{fragments/footer :: footer}"></footer>
 </body>
