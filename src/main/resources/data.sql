@@ -2,6 +2,10 @@ INSERT INTO CAMPUS (NAAM, CITY) VALUES ('Campus De Nayer', 'Mechelen');
 INSERT INTO CAMPUS (NAAM, CITY) VALUES ('Campus Geel', 'Geel');
 INSERT INTO CAMPUS (NAAM, CITY) VALUES ('Campus Brussel', 'Brussel');
 INSERT INTO CAMPUS (NAAM, CITY) VALUES ('Campus Antwerpen', 'Antwerpen');
+INSERT INTO CAMPUS (NAAM, CITY) VALUES ('Campus Vorst', 'Brussel');
+INSERT INTO CAMPUS (NAAM, CITY) VALUES ('Campus Leuven', 'Leuven');
+INSERT INTO CAMPUS (NAAM, CITY) VALUES ('Campus Turnhout', 'Turnhout');
+INSERT INTO CAMPUS (NAAM, CITY) VALUES ('Campus Mol', 'Mol');
 
 INSERT INTO ITEM (TITLE, DESCRIPTION, CATEGORY, STATUS, IMAGE_URL, OWNER_NAME, CAMPUS_ID)
 VALUES ('Boormachine Bosch', 'Krachtige boormachine voor kleine klusjes', 'Gereedschap', 'beschikbaar', '/img/boormachine.jpg', 'Aalap', 1);
