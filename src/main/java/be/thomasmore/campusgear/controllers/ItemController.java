@@ -2,6 +2,7 @@ package be.thomasmore.campusgear.controllers;
 
 import be.thomasmore.campusgear.model.Item;
 import be.thomasmore.campusgear.model.Campus;
+import be.thomasmore.campusgear.model.Reservation;
 import be.thomasmore.campusgear.repositories.CampusRepository;
 import be.thomasmore.campusgear.repositories.ItemRepository;
 import be.thomasmore.campusgear.repositories.ReservationRepository;
@@ -85,6 +86,15 @@ public class ItemController {
             if (itemFromDb.isPresent()) {
                 Item item = itemFromDb.get();
                 model.addAttribute("item", item);
+
+                // Zoek actieve reservatie voor dit item
+                Optional<Reservation> reservatie = reservationRepository
+                        .findFirstByItemIdAndEndDateGreaterThanEqual(
+                                id, LocalDate.now());
+                if (reservatie.isPresent()) {
+                    model.addAttribute("beschikbaarVanaf",
+                            reservatie.get().getEndDate().plusDays(1));
+                }
 
                 long count = itemRepository.count();
                 int prevId = (id == 1) ? (int) count : id - 1;
