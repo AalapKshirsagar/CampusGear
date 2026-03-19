@@ -26,10 +26,20 @@ INSERT INTO STUDENT (NAAM, EMAIL, PASSWORD, CAMPUS_ID)
 VALUES ('Aalap Kshirsagar', 'aalap@student.thomasmore.be', 'password', 1);
 
 INSERT INTO STUDENT (NAAM, EMAIL, PASSWORD, CAMPUS_ID)
-VALUES ('Sara Janssen', 'sara@student.thomasmore.be', 'password', 1);
+VALUES ('Sara Janssen', 'sara@student.thomasmore.be', 'password', 4);
 
 INSERT INTO STUDENT (NAAM, EMAIL, PASSWORD, CAMPUS_ID)
 VALUES ('Tom Peeters', 'tom@student.thomasmore.be', 'password', 2);
 
 INSERT INTO STUDENT (NAAM, EMAIL, PASSWORD, CAMPUS_ID)
 VALUES ('Lena Claes', 'lena@student.thomasmore.be', 'password', 3);
+
+
+INSERT INTO RESERVATION (START_DATE, END_DATE, ITEM_ID, STUDENT_ID)
+VALUES ('2026-03-19', '2026-03-22', 1, 1);
+
+INSERT INTO RESERVATION (START_DATE, END_DATE, ITEM_ID, STUDENT_ID)
+VALUES ('2026-03-20', '2026-03-25', 3, 2);
+
+INSERT INTO RESERVATION (START_DATE, END_DATE, ITEM_ID, STUDENT_ID)
+VALUES ('2026-03-21', '2026-03-23', 2, 3);
