@@ -30,6 +30,11 @@
                                   ? 'badge-beschikbaar' : 'badge-uitgeleend'"
                                   th:text="*{status}">
                             </span>
+                            <!-- Toon terugkeerdatum als item uitgeleend is -->
+                            <span th:if="${beschikbaarVanaf != null}"
+                                  class="text-muted ms-2"
+                                  th:text="|📅 Terug beschikbaar op: ${#temporals.format(beschikbaarVanaf, 'dd MMMM yyyy')}|">
+                            </span>
                         </td>
                     </tr>
                     <tr>
