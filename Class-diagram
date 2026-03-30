@@ -1,0 +1,131 @@
+# Class Diagram
+```mermaid
+classDiagram
+    class Campus {
+        -Integer id
+        -String naam
+        -String city
+        +getId() Integer
+        +setId(Integer)
+        +getNaam() String
+        +setNaam(String)
+        +getCity() String
+        +setCity(String)
+    }
+
+    class Student {
+        -Integer id
+        -String naam
+        -String email
+        -String password
+        -Campus campus
+        +getId() Integer
+        +setId(Integer)
+        +getNaam() String
+        +setNaam(String)
+        +getEmail() String
+        +setEmail(String)
+        +getPassword() String
+        +setPassword(String)
+        +getCampus() Campus
+        +setCampus(Campus)
+    }
+
+    class Item {
+        -Integer id
+        -String title
+        -String description
+        -String category
+        -String status
+        -String imageUrl
+        -String ownerName
+        -Campus campus
+        +getId() Integer
+        +setId(Integer)
+        +getTitle() String
+        +setTitle(String)
+        +getDescription() String
+        +setDescription(String)
+        +getCategory() String
+        +setCategory(String)
+        +getStatus() String
+        +setStatus(String)
+        +getImageUrl() String
+        +setImageUrl(String)
+        +getOwnerName() String
+        +setOwnerName(String)
+        +getCampus() Campus
+        +setCampus(Campus)
+    }
+
+    class Reservation {
+        -Integer id
+        -LocalDate startDate
+        -LocalDate endDate
+        -Item item
+        -Student student
+        +getId() Integer
+        +setId(Integer)
+        +getStartDate() LocalDate
+        +setStartDate(LocalDate)
+        +getEndDate() LocalDate
+        +setEndDate(LocalDate)
+        +getItem() Item
+        +setItem(Item)
+        +getStudent() Student
+        +setStudent(Student)
+    }
+
+    class ItemController {
+        -ItemRepository itemRepository
+        -CampusRepository campusRepository
+        -ReservationRepository reservationRepository
+        +itemList() String
+        +itemDetails() String
+    }
+
+    class CampusController {
+        -CampusRepository campusRepository
+        -ItemRepository itemRepository
+        +campusList() String
+        +campusItems() String
+    }
+
+    class StudentController {
+        -StudentRepository studentRepository
+        +studentList() String
+        +studentDetails() String
+    }
+
+    class HomeController {
+        +home() String
+        +about() String
+    }
+
+    class ItemRepository {
+        +findByCampusId(Integer) List
+        +findByFilter(Integer, String) List
+    }
+
+    class CampusRepository {
+    }
+
+    class StudentRepository {
+    }
+
+    class ReservationRepository {
+        +existsByItemIdAndDates() boolean
+        +findFirstByItemIdAndEndDate() Optional
+    }
+
+    Campus "1" --> "many" Student : studeert aan
+    Campus "1" --> "many" Item : beschikbaar op
+    Student "1" --> "many" Reservation : maakt
+    Item "1" --> "many" Reservation : wordt geboekt in
+    ItemController --> ItemRepository
+    ItemController --> CampusRepository
+    ItemController --> ReservationRepository
+    CampusController --> CampusRepository
+    CampusController --> ItemRepository
+    StudentController --> StudentRepository
+```
