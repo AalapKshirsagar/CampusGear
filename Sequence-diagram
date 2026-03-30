@@ -1,0 +1,41 @@
+# Sequence Diagram — Item Reserveren
+```mermaid
+sequenceDiagram
+    actor Student
+    participant Browser
+    participant ItemController
+    participant ReservationRepository
+    participant ItemRepository
+    participant Database
+
+    Student->>Browser: Ga naar /itemlist
+    Browser->>ItemController: GET /itemlist
+    ItemController->>ItemRepository: findByFilter(campusId, category)
+    ItemRepository->>Database: SELECT query
+    Database-->>ItemRepository: List van items
+    ItemRepository-->>ItemController: List van items
+    ItemController-->>Browser: itemlist.html met items
+
+    Student->>Browser: Klik op item
+    Browser->>ItemController: GET /itemdetails/1
+    ItemController->>ItemRepository: findById(1)
+    ItemRepository->>Database: SELECT query
+    Database-->>ItemRepository: Item object
+    ItemRepository-->>ItemController: Item object
+    ItemController->>ReservationRepository: findFirstByItemIdAndEndDateGreaterThanEqual(1, today)
+    ReservationRepository->>Database: SELECT query
+    Database-->>ReservationRepository: Reservatie object
+    ReservationRepository-->>ItemController: Reservatie object
+    ItemController-->>Browser: itemdetails.html met reservatie info
+
+    Student->>Browser: Kies datums en reserveer
+    Browser->>ItemController: POST /reserveer/1
+    ItemController->>ReservationRepository: existsByItemIdAndDates(1, start, end)
+    ReservationRepository->>Database: SELECT query
+    Database-->>ReservationRepository: false
+    ReservationRepository-->>ItemController: false
+    ItemController->>ReservationRepository: save(reservatie)
+    ReservationRepository->>Database: INSERT query
+    Database-->>ReservationRepository: OK
+    ItemController-->>Browser: Redirect naar bevestiging
+```
