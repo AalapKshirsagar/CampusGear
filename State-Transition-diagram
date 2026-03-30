@@ -1,0 +1,13 @@
+# State Transition Diagram — Item Status
+```mermaid
+stateDiagram-v2
+    [*] --> Beschikbaar : Item toegevoegd
+
+    Beschikbaar --> Gereserveerd : Student reserveert item
+    Gereserveerd --> Uitgeleend : Student haalt item op
+    Uitgeleend --> Beschikbaar : Reservatie eindigt
+    Gereserveerd --> Beschikbaar : Student annuleert reservatie
+    Beschikbaar --> Verwijderd : Admin verwijdert item
+    Uitgeleend --> Verwijderd : Admin verwijdert item
+    Verwijderd --> [*]
+```
