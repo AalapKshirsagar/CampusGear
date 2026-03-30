@@ -4,10 +4,12 @@ import be.thomasmore.campusgear.model.Campus;
 import be.thomasmore.campusgear.model.Item;
 import be.thomasmore.campusgear.repositories.CampusRepository;
 import be.thomasmore.campusgear.repositories.ItemRepository;
+import jakarta.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
@@ -46,10 +48,19 @@ public class ItemAdminController {
         return "admin/itemedit";
     }
 
-    // POST edit pagina
+    // POST edit pagina — met validatie
     @PostMapping("/itemedit/{id}")
-    public String itemEditPost(@PathVariable Integer id, Item item) {
+    public String itemEditPost(@PathVariable Integer id,
+                               @Valid Item item,
+                               BindingResult bindingResult,
+                               Model model) {
         logger.info(String.format("itemEditPost - id=%d", id));
+        if (bindingResult.hasErrors()) {
+            logger.info("Validatie fouten gevonden");
+            Iterable<Campus> campussen = campusRepository.findAll();
+            model.addAttribute("campussen", campussen);
+            return "admin/itemedit";
+        }
         itemRepository.save(item);
         return "redirect:/itemdetails/" + id;
     }
@@ -64,12 +75,17 @@ public class ItemAdminController {
         return "admin/itemnew";
     }
 
-    // POST nieuwe item
+    // POST nieuwe item — met validatie
     @PostMapping("/itemnew")
-    public String itemNewPost(Item item) {
+    public String itemNewPost(@Valid Item item,
+                              BindingResult bindingResult,
+                              Model model) {
         logger.info("itemNewPost");
-        if (item.getCampus() == null) {
-            return "redirect:/admin/itemnew";
+        if (bindingResult.hasErrors()) {
+            logger.info("Validatie fouten gevonden");
+            Iterable<Campus> campussen = campusRepository.findAll();
+            model.addAttribute("campussen", campussen);
+            return "admin/itemnew";
         }
         Item savedItem = itemRepository.save(item);
         return "redirect:/itemdetails/" + savedItem.getId();
