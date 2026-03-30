@@ -1,6 +1,7 @@
 package be.thomasmore.campusgear.model;
 
 import jakarta.persistence.*;
+import java.util.List;
 
 @Entity
 public class Item {
@@ -16,8 +17,11 @@ public class Item {
     private String imageUrl;
     private String ownerName;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private Campus campus;
+
+    @OneToMany(mappedBy = "item", fetch = FetchType.LAZY)
+    private List<Reservation> reservations;
 
     public Integer getId() { return id; }
     public void setId(Integer id) { this.id = id; }
@@ -42,4 +46,19 @@ public class Item {
 
     public Campus getCampus() { return campus; }
     public void setCampus(Campus campus) { this.campus = campus; }
+
+    public List<Reservation> getReservations() { return reservations; }
+    public void setReservations(List<Reservation> reservations) {
+        this.reservations = reservations;
+
+
+
+        @ManyToMany(mappedBy = "favorieten", fetch = FetchType.LAZY)
+        private List<Student> studenten;
+
+        public List<Student> getStudenten() { return studenten; }
+        public void setStudenten(List<Student> studenten) {
+            this.studenten = studenten;
+        }
+    }
 }
