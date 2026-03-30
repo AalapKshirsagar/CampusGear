@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="nl" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/head :: headerelement}"></head>
+<body>
+<nav th:replace="~{fragments/header :: navbar}"></nav>
+<main class="container mt-4">
+
+    <div th:if="${item != null}" th:object="${item}">
+        <div class="detail-header mb-4">
+            <h1>✏️ Item bewerken</h1>
+            <p th:text="*{title}"></p>
+        </div>
+
+        <form th:action="@{|/admin/itemedit/*{id}|}" method="post">
+            <div class="row g-3 w-50">
+
+                <!-- Titel -->
+                <div class="col-12">
+                    <label for="title" class="form-label fw-bold">Titel</label>
+                    <input type="text" id="title"
+                           class="form-control"
+                           th:field="*{title}"
+                           autofocus>
+                </div>
+
+                <!-- Omschrijving -->
+                <div class="col-12">
+                    <label for="description"
+                           class="form-label fw-bold">Omschrijving</label>
+                    <textarea id="description"
+                              class="form-control"
+                              rows="3"
+                              th:field="*{description}"></textarea>
+                </div>
+
+                <!-- Categorie -->
+                <div class="col-12">
+                    <label for="category"
+                           class="form-label fw-bold">Categorie</label>
+                    <select id="category" class="form-select"
+                            th:field="*{category}">
+                        <option value="Gereedschap">Gereedschap</option>
+                        <option value="Boeken">Boeken</option>
+                        <option value="Elektronica">Elektronica</option>
+                        <option value="Muziek">Muziek</option>
+                        <option value="Huishouden">Huishouden</option>
+                        <option value="Sport">Sport</option>
+                    </select>
+                </div>
+
+                <!-- Status -->
+                <div class="col-12">
+                    <label for="status"
+                           class="form-label fw-bold">Status</label>
+                    <select id="status" class="form-select"
+                            th:field="*{status}">
+                        <option value="beschikbaar">Beschikbaar</option>
+                        <option value="uitgeleend">Uitgeleend</option>
+                    </select>
+                </div>
+
+                <!-- Campus -->
+                <div class="col-12">
+                    <label for="campus"
+                           class="form-label fw-bold">Campus</label>
+                    <select id="campus" class="form-select"
+                            th:field="*{campus}">
+                        <option th:each="campus : ${campussen}"
+                                th:value="${campus.id}"
+                                th:text="${campus.naam}"
+                                th:selected="*{campus}">
+                        </option>
+                    </select>
+                </div>
+
+                <!-- Eigenaar -->
+                <div class="col-12">
+                    <label for="ownerName"
+                           class="form-label fw-bold">Eigenaar</label>
+                    <input type="text" id="ownerName"
+                           class="form-control"
+                           th:field="*{ownerName}">
+                </div>
+
+                <!-- Knoppen -->
+                <div class="col-12 mt-3">
+                    <button type="submit"
+                            class="btn btn-primary me-2">
+                        💾 Opslaan
+                    </button>
+                    <a th:href="@{'/itemdetails/' + *{id}}"
+                       class="btn btn-outline-secondary">
+                        Annuleren
+                    </a>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div th:if="${item == null}">
+        <div class="alert alert-warning">
+            <h4>Item niet gevonden</h4>
+            <a th:href="@{/itemlist}" class="btn btn-primary">
+                Terug naar items
+            </a>
+        </div>
+    </div>
+
+</main>
+<footer th:replace="~{fragments/footer :: footer}"></footer>
+</body>
+</html>

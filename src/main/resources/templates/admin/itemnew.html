@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="nl" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/head :: headerelement}"></head>
+<body>
+<nav th:replace="~{fragments/header :: navbar}"></nav>
+<main class="container mt-4">
+
+    <div class="detail-header mb-4">
+        <h1>➕ Nieuw item toevoegen</h1>
+    </div>
+
+    <!-- Algemene foutmelding -->
+    <div th:if="${#fields.hasErrors('*')}"
+         class="alert alert-danger mb-3 w-50">
+        ⚠️ Er zijn fouten gevonden. Controleer de velden hieronder.
+    </div>
+
+    <form th:action="@{/admin/itemnew}"
+          method="post"
+          th:object="${item}">
+        <div class="row g-3 w-50">
+
+            <!-- Titel -->
+            <div class="col-12">
+                <label for="title"
+                       class="form-label fw-bold">Titel</label>
+                <input type="text" id="title"
+                       th:field="*{title}"
+                       th:errorclass="is-invalid"
+                       class="form-control"
+                       autofocus>
+                <div class="invalid-feedback"
+                     th:if="${#fields.hasErrors('title')}"
+                     th:errors="*{title}">
+                </div>
+            </div>
+
+            <!-- Omschrijving -->
+            <div class="col-12">
+                <label for="description"
+                       class="form-label fw-bold">Omschrijving</label>
+                <textarea id="description"
+                          th:field="*{description}"
+                          th:errorclass="is-invalid"
+                          class="form-control"
+                          rows="3"></textarea>
+                <div class="invalid-feedback"
+                     th:if="${#fields.hasErrors('description')}"
+                     th:errors="*{description}">
+                </div>
+            </div>
+
+            <!-- Categorie -->
+            <div class="col-12">
+                <label for="category"
+                       class="form-label fw-bold">Categorie</label>
+                <select id="category"
+                        th:field="*{category}"
+                        th:errorclass="is-invalid"
+                        class="form-select">
+                    <option value="">Kies een categorie</option>
+                    <option value="Gereedschap">Gereedschap</option>
+                    <option value="Boeken">Boeken</option>
+                    <option value="Elektronica">Elektronica</option>
+                    <option value="Muziek">Muziek</option>
+                    <option value="Huishouden">Huishouden</option>
+                    <option value="Sport">Sport</option>
+                </select>
+                <div class="invalid-feedback"
+                     th:if="${#fields.hasErrors('category')}"
+                     th:errors="*{category}">
+                </div>
+            </div>
+
+            <!-- Status -->
+            <div class="col-12">
+                <label for="status"
+                       class="form-label fw-bold">Status</label>
+                <select id="status"
+                        th:field="*{status}"
+                        th:errorclass="is-invalid"
+                        class="form-select">
+                    <option value="beschikbaar">Beschikbaar</option>
+                    <option value="uitgeleend">Uitgeleend</option>
+                </select>
+                <div class="invalid-feedback"
+                     th:if="${#fields.hasErrors('status')}"
+                     th:errors="*{status}">
+                </div>
+            </div>
+
+            <!-- Campus -->
+            <div class="col-12">
+                <label for="campus"
+                       class="form-label fw-bold">Campus</label>
+                <select id="campus"
+                        th:field="*{campus}"
+                        th:errorclass="is-invalid"
+                        class="form-select">
+                    <option value="">Kies een campus</option>
+                    <option th:each="campus : ${campussen}"
+                            th:value="${campus.id}"
+                            th:text="${campus.naam}">
+                    </option>
+                </select>
+                <div class="invalid-feedback"
+                     th:if="${#fields.hasErrors('campus')}"
+                     th:errors="*{campus}">
+                </div>
+            </div>
+
+            <!-- Eigenaar -->
+            <div class="col-12">
+                <label for="ownerName"
+                       class="form-label fw-bold">Eigenaar</label>
+                <input type="text" id="ownerName"
+                       th:field="*{ownerName}"
+                       th:errorclass="is-invalid"
+                       class="form-control">
+                <div class="invalid-feedback"
+                     th:if="${#fields.hasErrors('ownerName')}"
+                     th:errors="*{ownerName}">
+                </div>
+            </div>
+
+            <!-- Knoppen -->
+            <div class="col-12 mt-3">
+                <button type="submit"
+                        class="btn btn-primary me-2">
+                    ➕ Aanmaken
+                </button>
+                <a th:href="@{/itemlist}"
+                   class="btn btn-outline-secondary">
+                    Annuleren
+                </a>
+            </div>
+        </div>
+    </form>
+
+</main>
+<footer th:replace="~{fragments/footer :: footer}"></footer>
+</body>
+</html>
