@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <body>
 <nav th:fragment="navbar" class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
         <a class="navbar-brand" th:href="@{/}">🎓 CampusGear</a>
-        <div class="navbar-nav">
+        <div class="navbar-nav me-auto">
             <a th:class="${currentUrl == '/' or currentUrl == '/home'}
                ? 'nav-link active' : 'nav-link'"
                th:href="@{/}">Home</a>
@@ -20,6 +21,24 @@
             <a th:class="${currentUrl == '/about'}
                ? 'nav-link active' : 'nav-link'"
                th:href="@{/about}">Over ons</a>
+        </div>
+        <div class="navbar-nav ms-auto">
+            <!-- Niet ingelogd -->
+            <a sec:authorize="!isAuthenticated()"
+               class="nav-link btn btn-outline-light btn-sm me-2"
+               th:href="@{/login}">
+                🔐 Inloggen
+            </a>
+            <!-- Ingelogd -->
+            <span sec:authorize="isAuthenticated()"
+                  class="nav-link text-light me-2"
+                  sec:authentication="name">
+            </span>
+            <a sec:authorize="isAuthenticated()"
+               class="nav-link btn btn-outline-danger btn-sm"
+               th:href="@{/logout-page}">
+                Uitloggen
+            </a>
         </div>
     </div>
 </nav>

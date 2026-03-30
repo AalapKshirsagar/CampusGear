@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="nl" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/head :: headerelement}"></head>
+<body>
+<nav th:replace="~{fragments/header :: navbar}"></nav>
+<main class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-4">
+            <div class="card mt-5">
+                <div class="card-body p-4 text-center">
+                    <h2 class="mb-4">👋 Uitloggen</h2>
+                    <p>Ben je zeker dat je wil uitloggen?</p>
+                    <form th:action="@{/logout}" method="post">
+                        <div class="d-grid gap-2">
+                            <button type="submit"
+                                    class="btn btn-danger">
+                                Uitloggen
+                            </button>
+                            <a th:href="@{/itemlist}"
+                               class="btn btn-outline-secondary">
+                                Annuleren
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+<footer th:replace="~{fragments/footer :: footer}"></footer>
+</body>
+</html>

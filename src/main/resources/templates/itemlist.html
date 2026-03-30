@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="nl" xmlns:th="http://www.thymeleaf.org">
+<html lang="nl" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:replace="~{fragments/head :: headerelement}"></head>
 <body>
 <nav th:replace="~{fragments/header :: navbar}"></nav>
@@ -12,7 +13,9 @@
                th:text="|${#lists.size(items)} items gevonden|"></p>
         </div>
         <div>
-            <a th:href="@{/admin/itemnew}"
+            <!-- Alleen zichtbaar voor ADMIN -->
+            <a sec:authorize="hasAuthority('ADMIN')"
+               th:href="@{/admin/itemnew}"
                class="btn btn-success me-2">
                 ➕ Nieuw item
             </a>
@@ -38,7 +41,9 @@
 
                         <!-- Campus filter -->
                         <div class="mb-3">
-                            <label class="form-label fw-bold">Campus</label>
+                            <label class="form-label fw-bold">
+                                Campus
+                            </label>
                             <select name="campusId" class="form-select">
                                 <option value="">Alle campussen</option>
                                 <option th:each="campus : ${campussen}"
@@ -52,7 +57,9 @@
 
                         <!-- Categorie filter -->
                         <div class="mb-3">
-                            <label class="form-label fw-bold">Categorie</label>
+                            <label class="form-label fw-bold">
+                                Categorie
+                            </label>
                             <select name="category" class="form-select">
                                 <option value="">Alle categorieën</option>
                                 <option th:each="cat : ${categories}"
@@ -91,7 +98,9 @@
                             Reset filters
                         </a>
                         <button type="button" class="btn btn-secondary"
-                                data-bs-dismiss="modal">Sluiten</button>
+                                data-bs-dismiss="modal">
+                            Sluiten
+                        </button>
                         <button type="submit" class="btn btn-primary">
                             🔍 Zoeken
                         </button>
@@ -121,7 +130,9 @@
                                class="btn btn-primary btn-sm me-2">
                                 Bekijk details
                             </a>
-                            <a th:href="@{'/admin/itemedit/' + ${item.id}}"
+                            <!-- Edit knop alleen voor ADMIN -->
+                            <a sec:authorize="hasAuthority('ADMIN')"
+                               th:href="@{'/admin/itemedit/' + ${item.id}}"
                                class="btn btn-warning btn-sm">
                                 ✏️
                             </a>
@@ -132,6 +143,7 @@
         </div>
     </div>
 
+    <!-- Geen items gevonden -->
     <div th:if="${#lists.size(items) == 0}">
         <div class="alert alert-info mt-4">
             <h4>😕 Geen items gevonden</h4>
