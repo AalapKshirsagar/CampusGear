@@ -1,0 +1,28 @@
+# Activity Diagram — Item Reserveren
+```mermaid
+
+    A([Start]) --> B[Student opent itemlist]
+    B --> C[Student stelt filters in]
+    C --> D{Filters ingevuld?}
+    D -->|Nee| E[Toon alle items]
+    D -->|Ja| F[Toon gefilterde items]
+    E --> G[Student klikt op item]
+    F --> G
+    G --> H[Toon itemdetails]
+    H --> I{Item beschikbaar?}
+    I -->|Nee| J[Toon terugkeerdatum]
+    J --> K([Einde])
+    I -->|Ja| L[Student kiest startdatum]
+    L --> M[Student kiest einddatum]
+    M --> N{Datums geldig?}
+    N -->|Nee| O[Toon foutmelding]
+    O --> L
+    N -->|Ja| P{Student ingelogd?}
+    P -->|Nee| Q[Redirect naar login]
+    Q --> R[Student logt in]
+    R --> P
+    P -->|Ja| S[Reservatie bevestigen]
+    S --> T[Sla reservatie op in database]
+    T --> U[Toon bevestiging]
+    U --> K([Einde])
+```
