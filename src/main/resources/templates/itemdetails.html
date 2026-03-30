@@ -1,21 +1,116 @@
-<!-- Wie heeft dit gereserveerd -->
-<div th:if="${not #lists.isEmpty(item.reservations)}" class="mt-4">
-    <h3>📅 Reservaties</h3>
-    <div class="row g-3 mt-2">
-        <div class="col-md-4"
-             th:each="reservatie : ${item.reservations}">
-            <div class="card">
-                <div class="card-body">
-                    <h6 class="card-title"
-                        th:text="${reservatie.student.naam}"></h6>
-                    <p class="text-muted mb-1"
-                       th:text="|Van: ${#temporals.format(reservatie.startDate, 'dd MMMM yyyy')}|">
-                    </p>
-                    <p class="text-muted"
-                       th:text="|Tot: ${#temporals.format(reservatie.endDate, 'dd MMMM yyyy')}|">
-                    </p>
+<!DOCTYPE html>
+<html lang="nl" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/head :: headerelement}"></head>
+<body>
+<nav th:replace="~{fragments/header :: navbar}"></nav>
+<main class="container mt-4">
+
+    <div th:if="${item != null}" th:object="${item}">
+        <div class="detail-header mb-4">
+            <h1 th:text="*{title}"></h1>
+            <p th:text="|📍 *{campus.naam} - *{campus.city}|"></p>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <table class="table table-bordered">
+                    <tr>
+                        <th>Omschrijving</th>
+                        <td th:text="*{description}"></td>
+                    </tr>
+                    <tr>
+                        <th>Categorie</th>
+                        <td th:text="*{category}"></td>
+                    </tr>
+                    <tr>
+                        <th>Status</th>
+                        <td>
+                            <span th:class="${item.status == 'beschikbaar'}
+                                  ? 'badge-beschikbaar' : 'badge-uitgeleend'"
+                                  th:text="*{status}">
+                            </span>
+                            <span th:if="${beschikbaarVanaf != null}"
+                                  class="text-muted ms-2"
+                                  th:text="|📅 Terug beschikbaar op: ${#temporals.format(beschikbaarVanaf, 'dd MMMM yyyy')}|">
+                            </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Eigenaar</th>
+                        <td th:text="*{ownerName}"></td>
+                    </tr>
+                    <tr>
+                        <th>Campus</th>
+                        <td th:text="*{campus.naam}"></td>
+                    </tr>
+                    <tr>
+                        <th>Stad</th>
+                        <td th:text="*{campus.city}"></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <!-- Reservaties -->
+        <div th:if="${not #lists.isEmpty(item.reservations)}"
+             class="mt-4">
+            <h3>📅 Reservaties</h3>
+            <div class="row g-3 mt-2">
+                <div class="col-md-4"
+                     th:each="reservatie : ${item.reservations}">
+                    <div class="card">
+                        <div class="card-body">
+                            <h6 class="card-title"
+                                th:text="${reservatie.student.naam}"></h6>
+                            <p class="text-muted mb-1"
+                               th:text="|Van: ${#temporals.format(reservatie.startDate, 'dd MMMM yyyy')}|">
+                            </p>
+                            <p class="text-muted"
+                               th:text="|Tot: ${#temporals.format(reservatie.endDate, 'dd MMMM yyyy')}|">
+                            </p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
+
+        <!-- Prev/Next knoppen -->
+        <div class="mt-3">
+            <a th:href="@{'/itemdetails/' + ${prevId}}"
+               class="btn btn-secondary me-2">← Vorige</a>
+            <a th:href="@{'/itemdetails/' + ${nextId}}"
+               class="btn btn-secondary">Volgende →</a>
+        </div>
+
+        <!-- Admin knoppen -->
+        <div class="mt-3">
+            <a th:href="@{'/admin/itemedit/' + *{id}}"
+               class="btn btn-warning me-2">
+                ✏️ Bewerken
+            </a>
+            <a th:href="@{'/admin/itemdelete/' + *{id}}"
+               class="btn btn-danger me-2"
+               onclick="return confirm('Ben je zeker dat je dit item wil verwijderen?')">
+                🗑️ Verwijderen
+            </a>
+            <a th:href="@{/itemlist}"
+               class="btn btn-outline-dark">
+                ← Terug naar items
+            </a>
+        </div>
     </div>
-</div>
+
+    <!-- Als item niet gevonden -->
+    <div th:if="${item == null}">
+        <div class="alert alert-warning mt-4">
+            <h4>Geen geldig item gekozen</h4>
+            <p>Ga terug naar de
+                <a th:href="@{/itemlist}">itemlijst</a>.
+            </p>
+        </div>
+    </div>
+
+</main>
+<footer th:replace="~{fragments/footer :: footer}"></footer>
+</body>
+</html>
