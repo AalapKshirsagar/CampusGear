@@ -23,6 +23,9 @@ public class Item {
     @OneToMany(mappedBy = "item", fetch = FetchType.LAZY)
     private List<Reservation> reservations;
 
+    @ManyToMany(mappedBy = "favorieten", fetch = FetchType.LAZY)
+    private List<Student> studenten;
+
     public Integer getId() { return id; }
     public void setId(Integer id) { this.id = id; }
 
@@ -50,15 +53,10 @@ public class Item {
     public List<Reservation> getReservations() { return reservations; }
     public void setReservations(List<Reservation> reservations) {
         this.reservations = reservations;
+    }
 
-
-
-        @ManyToMany(mappedBy = "favorieten", fetch = FetchType.LAZY)
-        private List<Student> studenten;
-
-        public List<Student> getStudenten() { return studenten; }
-        public void setStudenten(List<Student> studenten) {
-            this.studenten = studenten;
-        }
+    public List<Student> getStudenten() { return studenten; }
+    public void setStudenten(List<Student> studenten) {
+        this.studenten = studenten;
     }
 }
