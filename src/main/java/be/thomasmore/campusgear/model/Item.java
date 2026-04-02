@@ -9,7 +9,7 @@ import java.util.List;
 public class Item {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // zorgt automat. een nieuwe ID
     private Integer id;
 
     @NotBlank(message = "Titel mag niet leeg zijn")

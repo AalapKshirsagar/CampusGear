@@ -13,6 +13,9 @@ public class Campus {
     private String naam;
     private String city;
 
+
+
+    // fetchtype lazy --> laadt wanneer nodig --> betere performance
     @OneToMany(mappedBy = "campus", fetch = FetchType.LAZY)
     private List<Item> items;
 

@@ -24,12 +24,15 @@ public class CampusController {
         this.itemRepository = itemRepository;
     }
 
+    // campus lijst pagina
     @GetMapping("/campuslist")
     public String campusList(Model model) {
         Iterable<Campus> campussen = campusRepository.findAll();
         model.addAttribute("campussen", campussen);
         return "campuslist";
     }
+
+    // items beschikbaar of niet beschikbaar lijst op een pagina
 
     @GetMapping("/campusitems/{campusId}")
     public String campusItems(@PathVariable Integer campusId, Model model) {

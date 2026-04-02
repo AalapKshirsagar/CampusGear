@@ -39,7 +39,7 @@ public class ItemAdminController {
         return null;
     }
 
-    // GET edit pagina
+    // Edit optie + edit pagina
     @GetMapping("/itemedit/{id}")
     public String itemEdit(@PathVariable Integer id, Model model) {
         logger.info(String.format("itemEdit - id=%d", id));
@@ -48,7 +48,10 @@ public class ItemAdminController {
         return "admin/itemedit";
     }
 
-    // POST edit pagina — met validatie
+    // POST edit pagina — met validatie ->
+    // jij mag geen veld leeg laten -->
+    // alles volledig invullen beter voor de user -->
+    // van de website
     @PostMapping("/itemedit/{id}")
     public String itemEditPost(@PathVariable Integer id,
                                @Valid Item item,
@@ -65,7 +68,7 @@ public class ItemAdminController {
         return "redirect:/itemdetails/" + id;
     }
 
-    // GET nieuwe item pagina
+    // Nieuwe Item pagina als je een als admin een nieuwe item wil toevoegen
     @GetMapping("/itemnew")
     public String itemNew(Model model) {
         logger.info("itemNew");
@@ -75,7 +78,7 @@ public class ItemAdminController {
         return "admin/itemnew";
     }
 
-    // POST nieuwe item — met validatie
+    // Nieuwe item wordt gepost -
     @PostMapping("/itemnew")
     public String itemNewPost(@Valid Item item,
                               BindingResult bindingResult,
@@ -91,7 +94,7 @@ public class ItemAdminController {
         return "redirect:/itemdetails/" + savedItem.getId();
     }
 
-    // DELETE item
+    // Item verwijderen + delete item pagina
     @GetMapping("/itemdelete/{id}")
     public String itemDelete(@PathVariable Integer id) {
         logger.info(String.format("itemDelete - id=%d", id));

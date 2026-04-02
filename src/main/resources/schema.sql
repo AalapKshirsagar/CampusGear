@@ -1,3 +1,6 @@
+
+
+
 DROP TABLE IF EXISTS authorities;
 DROP TABLE IF EXISTS users;
 
@@ -14,3 +17,6 @@ CREATE TABLE authorities (
 );
 
 CREATE UNIQUE INDEX ix_auth_username ON authorities (username, authority);
+
+
+  <!-- zorgt ervoor dat de inlogger niet dubbele rol heeft. -->

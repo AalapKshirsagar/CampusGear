@@ -51,10 +51,10 @@ public class ItemController {
                 "itemList - campusId=%s, category=%s, startDate=%s, endDate=%s",
                 campusId, category, startDate, endDate));
 
-        // Haal gefilterde items op
+        // De de gefilterde items tonen ZONDER DATUM INGEGEVEN
         List<Item> items = itemRepository.findByFilter(campusId, category);
 
-        // Filter op beschikbaarheid als datums zijn ingevuld
+        // De items teruggeven --> MET DATUM INGEGEVEN
         if (startDate != null && endDate != null) {
             items = items.stream()
                     .filter(item -> !reservationRepository
@@ -63,10 +63,10 @@ public class ItemController {
                     .toList();
         }
 
-        // Alle campussen voor dropdown
+        // Alle campussen tonen
         Iterable<Campus> campussen = campusRepository.findAll();
 
-        // Alle categorieën
+        // Categorien tonen --> om makkelijker te zoeken zonder filter
         List<String> categories = List.of(
                 "Gereedschap", "Boeken", "Elektronica",
                 "Muziek", "Huishouden", "Sport"
@@ -90,7 +90,10 @@ public class ItemController {
                 Item item = itemFromDb.get();
                 model.addAttribute("item", item);
 
-                // Zoek actieve reservatie voor dit item
+                // Zoekt actieve reservatie voor dit item --> toont op welke
+                // dagen dat deze item gereserveerd is en laat zien wanneer die
+                // terug beschikbaar is
+
                 Optional<Reservation> reservatie = reservationRepository
                         .findFirstByItemIdAndEndDateGreaterThanEqual(
                                 id, LocalDate.now());
